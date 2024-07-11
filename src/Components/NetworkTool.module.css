@@ -1,77 +1,136 @@
-.Container{
-    font-size: 14px;
-    display: grid;
-    flex-direction: column;
+.Container {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-}
-.upperSection{
-    padding: 10px;
-    display: flex;
-    gap: 12px;
-    margin: 7px 0;
-}
 .upperSection {
-    display: flex;
-    align-items: center;
-  }
- .filterInput {
-    border: 1px solid rgb(134, 130, 130);
-    outline: none;
-    border-radius: 5px;
-    color: rgb(248, 238, 238);
-    background-color: #090b0f;
-  }
-  .Input>input{
-    width: 500px;
-    padding: 10px;
-  }
-  .Input>button{
-    width: 100px;
-    background-color: rgb(13, 134, 150);
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-  }
-  .upperSection>.Input{
-    display: flex;
-    margin-left: 400px;
-    gap: 7px;
-  }
-  .midSection{
-    margin-top: 5px;
-    padding: 0 10px;
-    flex-wrap: wrap;
-    display: flex;
-    gap: 10px;
-  }
-  .Requests{
-    border: 1px solid rgb(145, 144, 144);
-    padding: 2px 10px;
-    margin-right: 6px;
-    border-radius: 7px;
-    text-align: center;
-    cursor: pointer;
-  }
-  .Options{
-    display: flex;
+  padding: 10px;
+  display: flex;
+  gap: 12px;
+  margin: 7px 0;
+}
+
+.filterInput {
+  border: 1px solid rgb(134, 130, 130);
+  outline: none;
+  border-radius: 5px;
+  color: rgb(248, 238, 238);
+  background-color: #090b0f;
+  padding: 8px;
+}
+
+.Input > input {
+  width: 300px;
+  padding: 8px;
+}
+
+.Input > button {
+  width: 100px;
+  background-color: rgb(13, 134, 150);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.midSection {
+  margin-top: 10px;
+  padding: 0 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.Requests {
+  border: 1px solid rgb(145, 144, 144);
+  padding: 6px 10px;
+  margin-right: 6px;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.Requests:hover {
+  background-color: rgb(58, 56, 56);
+  transform: scale(1.01);
+}
+
+.Options {
+  display: flex;
   align-items: center;
   justify-content: center;
   width: max-content;
-  }
-  .Requests:hover {
-    background-color: rgb(58, 56, 56);
-    transform: scale(1.01);
-  }
-  .line {
-    border: 1px solid rgb(97, 92, 92);
-    margin-top: 15px;
-  }
-  .part1{
-    text-align: center;
-  color: rgb(145, 144, 144);
+}
+
+.line {
+  border: 1px solid rgb(97, 92, 92);
+  margin-top: 15px;
+}
+
+.part1 {
+  text-align: center;
+  color: lightgrey;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
-  }
+  height: 70vh;
+}
+
+.tableBox{
+  max-height: 90vh;
+  display: flex;
+}
+
+.table {
+  width: 100%;
+  height: min-content;
+  padding: 0px;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  font-size: larger;
+}
+
+.details {
+  border: solid gray 1px;
+  padding: 20px;
+  width: 40%;
+}
+.responseDetails {
+  width: 60vw;
+  margin: 20px;
+  border: 1px solid gray;
+  
+}
+.responseHeader{
+  border-bottom: 1px solid rgb(240, 240, 240);
+  display: flex;
+  gap: 15px;
+  padding: 5px;
+  font-size: larger;
+  cursor: pointer;
+}
+.selectedSection {
+  border-bottom: 1px solid gray;
+  color: gray;
+}
+.responseCard{
+  height: calc(100% - 31px);
+  overflow: auto;
+}
+.headers>div{
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 1fr 3fr;
+  font-size: larger;
+}
