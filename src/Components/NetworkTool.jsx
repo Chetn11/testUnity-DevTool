@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./NetworkTool.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../Redux/action";
+import ResponseDetails from "./ResponseDetails";
 
 let requestType = [
   { heading: "All", value: "all" },
@@ -116,7 +117,7 @@ function NetworkTool() {
 
       <div className={styles.line}></div>
 
-      {data.length === 0 ? (
+      {data.length <= 1 ? (
         <div className={styles.part1}>
           <div className={styles.part2}>
             <p>Recording network activity......</p>
@@ -146,22 +147,20 @@ function NetworkTool() {
             </thead>
             <tbody>
               {data.map((ele, ind) => {
-                const urlParts = ele.config?.url.split("https://");
-                if (urlParts) {
-                  const secondPart = urlParts[2];
+               
                   return (
                     <tr key={ind}>
                       <td
-                        onClick={() => handleDetails(ele,secondPart)}
+                        onClick={() => handleDetails(ele)}
                         style={{ cursor: "pointer" }}
                       >
-                        {secondPart || "Unnamed Request"}
+                        {ele.headers?.['x-final-url'] || "Unnamed Request"}
                       </td>
                       {!rightSide && (
                         <>
                           <td>{ele.status}</td>
                           <td>{ele.config?.method || "N/A"}</td>
-                          <td>{secondPart || "N/A"}</td>
+                          <td>{ele.headers?.['x-final-url'] || "N/A"}</td>
                           <td>
                             {Math.round((ele.request?.response || 0) / 1024)} Kb
                           </td>
@@ -170,84 +169,12 @@ function NetworkTool() {
                       )}
                     </tr>
                   );
-                }
+                
               })}
             </tbody>
           </table>
           {rightSide && (
-            <div className={styles.responseDetails}>
-              <div className={styles.responseHeader}>
-                <span onClick={() => setRightSide(false)}>⨉</span>
-                {["Headers", "Preview", "Response", "Initiator", "Timing"].map(
-                  (e, ind) => {
-                    return (
-                      <span
-                        key={ind}
-                        onClick={() => handleSelectSection(e)}
-                        className={section === e ? styles.selectedSection : ""}
-                      >
-                        {e}
-                      </span>
-                    );
-                  }
-                )}
-              </div>
-              <div className={styles.responseCard}>
-                {section === "Headers" && (
-                  <div className={styles.headers}>
-                    <div>
-                      <span>Request URL</span>
-                      <span>{}</span>
-                    </div>
-                    <div>
-                      <span>Request Method</span>
-                      <span>{selectedItem.config?.method || "N/A"}</span>
-                    </div>
-                    <div>
-                      <span>Status</span>
-                      <span>{selectedItem.status}</span>
-                    </div>
-                    <div>
-                      <span>duration</span>
-                      <span>{Math.round(selectedItem.duration || 0)}ms</span>
-                    </div>
-                    <div>
-                      <span>size</span>
-                      <span>Kb</span>
-                    </div>
-                    {
-                      // requestData.statusText && <div>
-                      //     <span>statusText</span>
-                      //     <span>{}</span>
-                      // </div>
-                    }
-
-                    <div>
-                      <span>time</span>
-                      <span>{}</span>
-                    </div>
-                    <div>
-                      <span>type</span>
-                      <span>{}</span>
-                    </div>
-                  </div>
-                )}
-                {section === "Preview" && <pre>"Not a valid json"</pre>}
-                {section === "Response" && <pre>Empty</pre>}
-                {section === "Initiator" && (
-                  <div>
-                    <h1 style={{ color: "gray", textAlign: "center" }}>
-                      This request has no initiator data.
-                    </h1>
-                  </div>
-                )}
-                {section === "Timing" && (
-                  <div style={{ fontSize: "larger", padding: "10px" }}>
-                    Request has taken ms to complete{" "}
-                  </div>
-                )}
-              </div>
-            </div>
+            <ResponseDetails section={section} selectedItem={selectedItem} setRightSide={setRightSide} handleSelectSection={handleSelectSection}/>
           )}
         </div>
       )}
