@@ -130,17 +130,23 @@
   padding: 0px;
   border-collapse: collapse;
 }
-
+tr:hover {background-color: gray;}
+.table thead{
+  border: 1px solid #dddddd;
+}
 .table th,
 .table td {
-  border: 1px solid #dddddd;
   text-align: left;
+  margin-left: 5px;
   padding: 8px;
+  border-right: 1px solid #dddddd;
 }
-
+td:first-child, th:first-child {
+  border-left: none;
+ }
 .table th {
-  background-color: #f2f2f2;
   font-size: larger;
+  border: 1px solid #dddddd;
 }
 
 .details {
@@ -150,14 +156,18 @@
 }
 .responseDetails {
   width: 60vw;
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
   border: 1px solid gray;
+  text-align: left;
 }
 .responseHeader {
   border-bottom: 1px solid rgb(240, 240, 240);
   display: flex;
+  text-align: left;
   gap: 15px;
-  padding: 5px;
+  padding: 10px;
   font-size: larger;
   cursor: pointer;
 }

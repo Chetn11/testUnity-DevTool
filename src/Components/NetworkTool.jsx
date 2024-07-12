@@ -4,14 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../Redux/action";
 import ResponseDetails from "./ResponseDetails";
 import { AiOutlineSelect } from "react-icons/ai";
-import { MdDevices,MdWifiPassword } from "react-icons/md";
+import { MdDevices, MdWifiPassword } from "react-icons/md";
 import { BsRecord2 } from "react-icons/bs";
 import { GrClear } from "react-icons/gr";
-import { FaFilter,  FaSearch } from "react-icons/fa";
+import { FaFilter, FaSearch } from "react-icons/fa";
 import { TiArrowSortedDown } from "react-icons/ti";
-import { FaArrowUpFromBracket } from "react-icons/fa6";
-
-
+import { FaArrowUpFromBracket, FaArrowDown } from "react-icons/fa6";
 
 let requestType = [
   { heading: "All", value: "all" },
@@ -75,8 +73,12 @@ function NetworkTool() {
     <div className={styles.Container}>
       <div className={styles.header}>
         <ul className={styles.menu}>
-          <li><AiOutlineSelect /></li>
-          <li><MdDevices /></li>
+          <li>
+            <AiOutlineSelect />
+          </li>
+          <li>
+            <MdDevices />
+          </li>
           <li>|</li>
           <li>Elements</li>
           <li>Console</li>
@@ -88,27 +90,49 @@ function NetworkTool() {
           <li>Lighthouse</li>
         </ul>
         <ul className={styles.menu2}>
-          <li><BsRecord2 style={{ fontSize: '20px', color: 'red' }} /></li>
-          <li><GrClear /></li>
+          <li>
+            <BsRecord2 style={{ fontSize: "20px", color: "red" }} />
+          </li>
+          <li>
+            <GrClear />
+          </li>
           <li>|</li>
-          <li><FaFilter style={{ fontSize: '15px', color: 'red' }}/></li>
-          <li><FaSearch/></li>
+          <li>
+            <FaFilter style={{ fontSize: "15px", color: "red" }} />
+          </li>
+          <li>
+            <FaSearch />
+          </li>
           <li>|</li>
-          <li><div>
-          <input type="checkbox" />
-          <label>Preserve log</label>
-        </div></li>
-        <li>|</li>
-        <li><div>
-          <input type="checkbox" />
-          <label>disable catch</label>
-        </div></li>
-        <li>No throtteling</li>
-        <li><TiArrowSortedDown/></li>
-        <li><MdWifiPassword/></li>
-        <li><FaArrowUpFromBracket/></li>
+          <li>
+            <div>
+              <input type="checkbox" />
+              <label>Preserve log</label>
+            </div>
+          </li>
+          <li>|</li>
+          <li>
+            <div>
+              <input type="checkbox" />
+              <label>Disable catch</label>
+            </div>
+          </li>
+          <li>No throtteling</li>
+          <li>
+            <TiArrowSortedDown />
+          </li>
+          <li>
+            <MdWifiPassword />
+          </li>
+          <li>|</li>
+          <li>
+            <FaArrowUpFromBracket />
+          </li>
+          <li>
+            <FaArrowDown />
+          </li>
         </ul>
-        </div>
+      </div>
       <div className={styles.upperSection}>
         <input
           type="text"
@@ -187,9 +211,9 @@ function NetworkTool() {
           >
             <thead>
               <tr style={{ fontSize: "larger" }}>
-                <td>Name</td>
                 {!rightSide && (
                   <>
+                    <td>Name</td>
                     <td>Status</td>
                     <td>Method</td>
                     <td>Type</td>
