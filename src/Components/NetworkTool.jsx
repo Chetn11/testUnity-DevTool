@@ -3,6 +3,15 @@ import styles from "./NetworkTool.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../Redux/action";
 import ResponseDetails from "./ResponseDetails";
+import { AiOutlineSelect } from "react-icons/ai";
+import { MdDevices,MdWifiPassword } from "react-icons/md";
+import { BsRecord2 } from "react-icons/bs";
+import { GrClear } from "react-icons/gr";
+import { FaFilter,  FaSearch } from "react-icons/fa";
+import { TiArrowSortedDown } from "react-icons/ti";
+import { FaArrowUpFromBracket } from "react-icons/fa6";
+
+
 
 let requestType = [
   { heading: "All", value: "all" },
@@ -64,6 +73,42 @@ function NetworkTool() {
   console.log(response);
   return (
     <div className={styles.Container}>
+      <div className={styles.header}>
+        <ul className={styles.menu}>
+          <li><AiOutlineSelect /></li>
+          <li><MdDevices /></li>
+          <li>|</li>
+          <li>Elements</li>
+          <li>Console</li>
+          <li className={styles.active}>Network</li>
+          <li>Sources</li>
+          <li>Performance</li>
+          <li>Memory</li>
+          <li>Application</li>
+          <li>Lighthouse</li>
+        </ul>
+        <ul className={styles.menu2}>
+          <li><BsRecord2 style={{ fontSize: '20px', color: 'red' }} /></li>
+          <li><GrClear /></li>
+          <li>|</li>
+          <li><FaFilter style={{ fontSize: '15px', color: 'red' }}/></li>
+          <li><FaSearch/></li>
+          <li>|</li>
+          <li><div>
+          <input type="checkbox" />
+          <label>Preserve log</label>
+        </div></li>
+        <li>|</li>
+        <li><div>
+          <input type="checkbox" />
+          <label>disable catch</label>
+        </div></li>
+        <li>No throtteling</li>
+        <li><TiArrowSortedDown/></li>
+        <li><MdWifiPassword/></li>
+        <li><FaArrowUpFromBracket/></li>
+        </ul>
+        </div>
       <div className={styles.upperSection}>
         <input
           type="text"
@@ -102,7 +147,7 @@ function NetworkTool() {
               className={styles.Requests}
               key={ind}
               style={{
-                backgroundColor: filter === ele.value ? "rgb(114,114,114)" : "",
+                backgroundColor: filter === ele.value ? "#727272" : "",
               }}
               onClick={() => setFilter(ele.value)}
             >

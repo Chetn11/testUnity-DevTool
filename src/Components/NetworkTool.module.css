@@ -5,7 +5,38 @@
   flex-wrap: wrap;
   flex-direction: column;
 }
+.menu {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  background-color: #1e282d;
+  padding: 10px;
+  color: lightgray;
+  border-bottom: 1px solid gray;
+  margin: 0;
+}
+.menu2{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 3px;
+  background-color: #2b2e31;
+  color: lightgray;
+  border-bottom: 1px solid gray;
+  margin: 0;
+}
+.menu2 li {
+  list-style: none;
+}
+.menu li {
+  list-style: none;
+}
 
+.active {
+  color: skyblue;
+  border-bottom: 2px solid skyblue;
+}
 .upperSection {
   padding: 10px;
   display: flex;
