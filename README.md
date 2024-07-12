@@ -56,7 +56,7 @@ Home Page
 ![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/home.PNG)
 
 1. After making request
-![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/get%20data.PNG)
+![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/d1.PNG)
 
 2. Filter
 ![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/filter.PNG)
@@ -65,7 +65,7 @@ Home Page
 ![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/heders.PNG)
 
 4.
-![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/response.PNG)
+![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/r1.PNG)
 
 
 5.  video
