@@ -6,25 +6,28 @@ import ResponseDetails from "./ResponseDetails";
 
 let requestType = [
   { heading: "All", value: "all" },
-  { heading: "Fetch/XHR", value: "fetch" },
-  { heading: "Doc", value: "document" },
-  { heading: "CSS", value: "style" },
-  { heading: "JS", value: "script" },
+  { heading: "Fetch/XHR", value: "fetch/xhr" },
+  { heading: "Doc", value: "doc" },
+  { heading: "CSS", value: "css" },
+  { heading: "JS", value: "js" },
   { heading: "Font", value: "font" },
   { heading: "Img", value: "image" },
   { heading: "Media", value: "media" },
   { heading: "Manifest", value: "manifest" },
-  { heading: "WS", value: "websocket" },
+  { heading: "WS", value: "ws" },
   { heading: "Wasm", value: "wasm" },
   { heading: "Other", value: "other" },
 ];
 
 function NetworkTool() {
-  const response = useSelector((store) => store.reducer.response);
+  const { response, fetchedData } = useSelector(
+    (store) => store.reducer.response
+  );
   const dispatch = useDispatch();
-  const [data, setData] = useState([]);
+
   const [link, setLink] = useState("");
   const [filter, setFilter] = useState("all");
+  const [filterData, setFilterData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null); // Track selected item for details
   const [rightSide, setRightSide] = useState(false);
   const [section, setSection] = useState("Headers");
@@ -39,10 +42,15 @@ function NetworkTool() {
   };
 
   useEffect(() => {
-    if (response) {
-      setData((prevData) => [...prevData, response]);
+    if (filter === "all") {
+      setFilterData(fetchedData);
+    } else {
+      const data = fetchedData.filter((ele) => {
+        return ele.type === filter;
+      });
+      setFilterData(data);
     }
-  }, [response]);
+  }, [response, filter]);
 
   const handleDetails = (item) => {
     setRightSide(true);
@@ -52,7 +60,8 @@ function NetworkTool() {
   const handleSelectSection = (val) => {
     setSection(val);
   };
-  console.log(data);
+  console.log(filter);
+  console.log(fetchedData);
   return (
     <div className={styles.Container}>
       <div className={styles.upperSection}>
@@ -117,7 +126,7 @@ function NetworkTool() {
 
       <div className={styles.line}></div>
 
-      {data.length <= 1 ? (
+      {!fetchedData ? (
         <div className={styles.part1}>
           <div className={styles.part2}>
             <p>Recording network activity......</p>
@@ -137,44 +146,51 @@ function NetworkTool() {
                 {!rightSide && (
                   <>
                     <td>Status</td>
+                    <td>Method</td>
                     <td>Type</td>
                     <td>Initiator</td>
-                    <td>Size</td>
                     <td>Time</td>
                   </>
                 )}
               </tr>
             </thead>
             <tbody>
-              {data.map((ele, ind) => {
-               
-                  return (
-                    <tr key={ind}>
-                      <td
-                        onClick={() => handleDetails(ele)}
-                        style={{ cursor: "pointer" }}
-                      >
-                        {ele.headers?.['x-final-url'] || "Unnamed Request"}
-                      </td>
-                      {!rightSide && (
-                        <>
-                          <td>{ele.status}</td>
-                          <td>{ele.config?.method || "N/A"}</td>
-                          <td>{ele.headers?.['x-final-url'] || "N/A"}</td>
-                          <td>
-                            {Math.round((ele.request?.response || 0) / 1024)} Kb
-                          </td>
-                          <td>{Math.round(ele.duration || 0)} ms</td>
-                        </>
-                      )}
-                    </tr>
-                  );
-                
+              {filterData?.map((ele, ind) => {
+                return (
+                  <>
+                    {ele.url && (
+                      <tr key={ind}>
+                        <td
+                          onClick={() => handleDetails(response)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          {ele.url || "Unnamed Request"}
+                        </td>
+                        {!rightSide && (
+                          <>
+                            <td>{response.status}</td>
+                            <td>{response.config?.method || "N/A"}</td>
+                            <td>{ele.type}</td>
+                            <td>
+                              {response.headers?.["x-final-url"] || "N/A"}
+                            </td>
+                            <td>{Math.round(response.duration || 0)} ms</td>
+                          </>
+                        )}
+                      </tr>
+                    )}
+                  </>
+                );
               })}
             </tbody>
           </table>
           {rightSide && (
-            <ResponseDetails section={section} selectedItem={selectedItem} setRightSide={setRightSide} handleSelectSection={handleSelectSection}/>
+            <ResponseDetails
+              section={section}
+              selectedItem={selectedItem}
+              setRightSide={setRightSide}
+              handleSelectSection={handleSelectSection}
+            />
           )}
         </div>
       )}
