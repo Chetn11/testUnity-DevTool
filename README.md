@@ -25,7 +25,7 @@ MOVIE-WatchLIST-/
 
 
 ## video of project
-Project video link [here]()
+Project video link [here](https://drive.google.com/file/d/17ARVa1F-faZqZWrCAjl9bNW6U331tifz/view?usp=sharing)
 
 
 ## Features
@@ -69,7 +69,7 @@ Home Page
 
 
 5.  video
-[here]()
+[here](https://drive.google.com/file/d/17ARVa1F-faZqZWrCAjl9bNW6U331tifz/view?usp=sharing)
 
 
 ## Tech Stack
