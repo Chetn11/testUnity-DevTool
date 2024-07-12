@@ -65,7 +65,7 @@ Home Page
 ![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/heders.PNG)
 
 4.
-![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/r1.PNG)
+![Screenshot 1](https://github.com/Chetn11/testUnity-DevTool/blob/main/src/images/response.PNG)
 
 
 5.  video
