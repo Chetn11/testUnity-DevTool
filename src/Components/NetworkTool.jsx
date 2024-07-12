@@ -61,7 +61,7 @@ function NetworkTool() {
     setSection(val);
   };
   console.log(filter);
-  console.log(fetchedData);
+  console.log(response);
   return (
     <div className={styles.Container}>
       <div className={styles.upperSection}>

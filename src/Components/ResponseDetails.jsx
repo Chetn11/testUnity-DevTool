@@ -64,7 +64,7 @@ function ResponseDetails({
         {section === "Timing" && (
           <div style={{ fontSize: "larger", padding: "10px" }}>
             Request has taken {Math.round(selectedItem.duration || 0)} ms to
-            complete
+            complete.
           </div>
         )}
       </div>
