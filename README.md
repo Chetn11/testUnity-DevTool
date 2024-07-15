@@ -1,3 +1,8 @@
+Important Note : 
+Before visiting to website 
+Please go to corsProxy = "https://cors-anywhere.herokuapp.com/corsdemo"
+   - Click on "give me temporary access"
+
 ***** DevTool *****
 
 This project is a network monitoring application built using React and Css, designed to display network requests and provide filtering options.
