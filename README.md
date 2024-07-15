@@ -44,7 +44,7 @@ To use Todo App locally->
 2. Install dependencies by running `npm install` in your terminal.
 3. Start the application using `npm start`.
 4. If Didn't get any response after clicking on test then
-   - go to corsProxy = "https://cors-anywhere.herokuapp.com/"
+   - go to corsProxy = "https://cors-anywhere.herokuapp.com/corsdemo"
    - Click on "give me temporary access"
 
 
